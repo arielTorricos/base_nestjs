@@ -87,4 +87,20 @@ export class LibrosController {
     return this.sevice.createPrestamo(body);
   }
 
+  @Delete('Eliminar/prestamo/:id')
+  @BearerAuthToken()
+  @VersionDescription(
+    '1',
+    'Servico para Eliminar el Prestamo de un libro',
+  )
+  eliminarPrestamo(@Param(
+    'id',
+    new ParseIntPipe({
+      errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+    }),
+  )
+  id: number) {
+    return this.sevice.eliminarPrestamo(id);
+  }
+
 }

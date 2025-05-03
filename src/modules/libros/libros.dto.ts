@@ -29,6 +29,19 @@ export class LibroDto {
   @IsOptional()
   @ApiProperty({ description: 'autor del tipo de reserva.', required: false })
   autor: string;
+
+  @Expose()
+  @Type(() => Number)
+  @IsNumber(
+    { allowInfinity: false, allowNaN: false, maxDecimalPlaces: 0 },
+    { message: 'el autor_id debe ser tipo numero' },
+  )
+  @ApiProperty({
+    description: 'identificador del autor',
+    example:5,
+    required: true,
+  })
+  autor_id: number;
 }
 
 export class FilterlibroDto {

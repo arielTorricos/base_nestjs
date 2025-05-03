@@ -28,6 +28,7 @@ export class LibrosService {
       const tipo = await this.dataBase.libros.create({
         data: {
           codigo:params.codigo,
+          autor_id: params.autor_id,
           nombre:params.nombre.toLocaleUpperCase(),
           autor: params.autor.toLocaleUpperCase(),
         }
@@ -135,6 +136,18 @@ export class LibrosService {
           lector: params.lector,
           libro_id: params.libro_id,
         }
+      })
+
+      return dataResponseSuccess({data: tipo});
+    } catch (error) {
+      return dataResponseError(error.message);
+    }
+  }
+
+  async eliminarPrestamo (id: number):Promise<IResponse> {
+    try {
+      const tipo = await this.dataBase.prestamos.delete({
+        where: {id:id}
       })
 
       return dataResponseSuccess({data: tipo});

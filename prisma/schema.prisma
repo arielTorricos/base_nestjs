@@ -35,10 +35,12 @@ model Libros {
   nombre String
   codigo String
   autor String
+  autor_id Int
   estado Int @default(1)
   creadoEn               DateTime?       @default(now())
   actualizadoEn          DateTime?       @updatedAt
 
+  autores autores  @relation(fields: [autor_id], references: [id])
   prestamos Prestamos[]
 }
 
@@ -55,3 +57,12 @@ model Prestamos {
 }
 
 
+model autores {
+  id Int @id @default(autoincrement())
+  nombre String
+
+  creadoEn               DateTime?       @default(now())
+  actualizadoEn          DateTime?       @updatedAt
+
+  Libros Libros[]
+}

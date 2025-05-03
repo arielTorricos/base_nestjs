@@ -5,11 +5,13 @@ import { UsuariosModule } from "./usuarios/usuarios.module";
 import { RouterModule } from "@nestjs/core";
 import { AuthModule } from "./auth/auth.module";
 import { LibrosModule } from "./libros/libros.module";
+import { AutoresModule } from "./autor/autores.module";
 
 const modules = [
   AuthModule,
   UsuariosModule,
   LibrosModule,
+  AutoresModule,
 ];
 
 @Module({
